@@ -1,5 +1,6 @@
 package examples.form1;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -18,9 +19,68 @@ public class MainDialog extends javax.swing.JDialog {
         centraTextoEtiqueta();
     }
     
+    /**
+     * Method to align center label
+     */
     private void centraTextoEtiqueta() {
         this.jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         this.jLabel1.setVerticalAlignment(SwingConstants.CENTER);
+    }
+    
+    /**
+     * Method to validate the form
+     * @return False if the form is blank or true is form is complete
+     */
+    private boolean isConfirm() {
+        String nombre = this.jTextFieldNombre.getText();
+        String apellido = this.jTextFieldApellidos.getText();
+        String email = this.jTextFieldEmail.getText();
+        String fecha = this.jTextFieldFechaAlta.getText();
+        boolean colorRojo = this.jRadioButtonRojo.isSelected();
+        boolean colorAmarillo = this.jRadioButtonAmarillo.isSelected();
+        boolean colorMorado = this.jRadioButtonMorado.isSelected();
+        boolean colorNegro = this.jRadioButtonNegro.isSelected();
+        boolean colorRosa = this.jRadioButtonRosa.isSelected();
+        boolean colorVerde = this.jRadioButtonVerde.isSelected();
+        boolean colorAzul = this.jRadioButtonAzul.isSelected();
+        boolean baloncesto  = this.jCheckBoxBaloncesto.isSelected();
+        boolean balonmano = this.jCheckBoxBalonmano.isSelected();
+        boolean formula = this.jCheckBoxFormula1.isSelected();
+        boolean futbol = this.jCheckBoxFutbol.isSelected();
+        boolean padel = this.jCheckBoxPadel.isSelected();
+        boolean tenis = this.jCheckBoxTenis.isSelected();
+        
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo nombre está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if (apellido.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo apellido está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo email está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if (fecha.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo fecha alta está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if (!colorRojo && !colorAmarillo && !colorMorado && !colorNegro && !colorRosa && !colorVerde && !colorAzul) {
+            JOptionPane.showMessageDialog(this, "Selecciona un color favorito.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if (!baloncesto && !balonmano && !formula && !futbol && !padel && !tenis) {
+            JOptionPane.showMessageDialog(this, "Selecciona un deporte favorito.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 
     /**
@@ -37,13 +97,15 @@ public class MainDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldApellidos = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        jSliderEdad = new javax.swing.JSlider();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldFechaAlta = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jRadioButtonRojo = new javax.swing.JRadioButton();
@@ -97,31 +159,35 @@ public class MainDialog extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout(4, 2));
+        jPanel2.setLayout(new java.awt.GridLayout(5, 2));
 
         jLabel2.setText("Nombre");
         jPanel2.add(jLabel2);
-        jPanel2.add(jTextField1);
+        jPanel2.add(jTextFieldNombre);
 
         jLabel3.setText("Apellidos");
         jPanel2.add(jLabel3);
-        jPanel2.add(jTextField2);
+        jPanel2.add(jTextFieldApellidos);
 
         jLabel4.setText("Correo electrónico");
         jPanel2.add(jLabel4);
-        jPanel2.add(jTextField3);
+        jPanel2.add(jTextFieldEmail);
 
         jLabel5.setText("Edad");
         jPanel2.add(jLabel5);
 
-        jSlider1.setMaximum(120);
-        jSlider1.setMinimum(18);
-        jSlider1.setMinorTickSpacing(10);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setValueIsAdjusting(true);
-        jPanel2.add(jSlider1);
+        jSliderEdad.setMaximum(120);
+        jSliderEdad.setMinimum(18);
+        jSliderEdad.setMinorTickSpacing(10);
+        jSliderEdad.setPaintLabels(true);
+        jSliderEdad.setPaintTicks(true);
+        jSliderEdad.setSnapToTicks(true);
+        jSliderEdad.setValueIsAdjusting(true);
+        jPanel2.add(jSliderEdad);
+
+        jLabel9.setText("Fecha de alta");
+        jPanel2.add(jLabel9);
+        jPanel2.add(jTextFieldFechaAlta);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 255))); // NOI18N
 
@@ -245,6 +311,11 @@ public class MainDialog extends javax.swing.JDialog {
         );
 
         jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +329,7 @@ public class MainDialog extends javax.swing.JDialog {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(161, 161, 161)
+                .addGap(175, 175, 175)
                 .addComponent(jButtonAceptar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSalir)
@@ -295,22 +366,36 @@ public class MainDialog extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Method to exit
+     * @param evt 
+     */
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
+    
+    /**
+     * Method to confirm
+     * @param evt 
+     */
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+       if (this.isConfirm()) {
+           JOptionPane.showMessageDialog(this, "Validado");
+       }
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,6 +459,7 @@ public class MainDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -388,10 +474,11 @@ public class MainDialog extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioButtonRojo;
     private javax.swing.JRadioButton jRadioButtonRosa;
     private javax.swing.JRadioButton jRadioButtonVerde;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSliderEdad;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextFieldApellidos;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldFechaAlta;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
