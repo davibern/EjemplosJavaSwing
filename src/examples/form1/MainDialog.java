@@ -17,6 +17,8 @@ public class MainDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         centraTextoEtiqueta();
+        this.jLabelStreaming.setVisible(false);
+        this.jTextFieldStreaming.setVisible(false);
     }
     
     /**
@@ -36,6 +38,7 @@ public class MainDialog extends javax.swing.JDialog {
         String apellido = this.jTextFieldApellidos.getText();
         String email = this.jTextFieldEmail.getText();
         String fecha = this.jTextFieldFechaAlta.getText();
+        String streaming = this.jTextFieldStreaming.getText();
         boolean colorRojo = this.jRadioButtonRojo.isSelected();
         boolean colorAmarillo = this.jRadioButtonAmarillo.isSelected();
         boolean colorMorado = this.jRadioButtonMorado.isSelected();
@@ -80,6 +83,13 @@ public class MainDialog extends javax.swing.JDialog {
             return false;
         }
         
+        if (this.jRadioButtonStreamingSi.isSelected()) {
+            if (streaming.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Hay que indicar un servicio de streaming", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
         return true;
     }
 
@@ -93,6 +103,7 @@ public class MainDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroupColores = new javax.swing.ButtonGroup();
+        buttonGroupStreaming = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -132,6 +143,12 @@ public class MainDialog extends javax.swing.JDialog {
         jPanel7 = new javax.swing.JPanel();
         jButtonAceptar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jRadioButtonStreamingSi = new javax.swing.JRadioButton();
+        jRadioButtonStreamingNo = new javax.swing.JRadioButton();
+        jLabelStreaming = new javax.swing.JLabel();
+        jTextFieldStreaming = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -148,7 +165,7 @@ public class MainDialog extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -290,7 +307,7 @@ public class MainDialog extends javax.swing.JDialog {
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addComponent(jSpinner1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxMotos, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,6 +362,61 @@ public class MainDialog extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel10.setText("¿Tienes suscripción por streaming?");
+
+        buttonGroupStreaming.add(jRadioButtonStreamingSi);
+        jRadioButtonStreamingSi.setText("Sí");
+        jRadioButtonStreamingSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonStreamingSiActionPerformed(evt);
+            }
+        });
+
+        buttonGroupStreaming.add(jRadioButtonStreamingNo);
+        jRadioButtonStreamingNo.setText("No");
+        jRadioButtonStreamingNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonStreamingNoActionPerformed(evt);
+            }
+        });
+
+        jLabelStreaming.setText("Indica cuáles");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButtonStreamingSi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButtonStreamingNo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabelStreaming)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldStreaming)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jRadioButtonStreamingSi)
+                    .addComponent(jRadioButtonStreamingNo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelStreaming)
+                    .addComponent(jTextFieldStreaming, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -352,12 +424,15 @@ public class MainDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,13 +441,15 @@ public class MainDialog extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -396,6 +473,20 @@ public class MainDialog extends javax.swing.JDialog {
            JOptionPane.showMessageDialog(this, "Validado");
        }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jRadioButtonStreamingSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonStreamingSiActionPerformed
+        if (this.jRadioButtonStreamingSi.isSelected()) {
+            this.jLabelStreaming.setVisible(true);
+            this.jTextFieldStreaming.setVisible(true);
+        }
+    }//GEN-LAST:event_jRadioButtonStreamingSiActionPerformed
+
+    private void jRadioButtonStreamingNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonStreamingNoActionPerformed
+        if (this.jRadioButtonStreamingNo.isSelected()) {
+            this.jLabelStreaming.setVisible(false);
+            this.jTextFieldStreaming.setVisible(false);
+        }
+    }//GEN-LAST:event_jRadioButtonStreamingNoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,6 +532,7 @@ public class MainDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupColores;
+    private javax.swing.ButtonGroup buttonGroupStreaming;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JCheckBox jCheckBoxBaloncesto;
@@ -452,6 +544,7 @@ public class MainDialog extends javax.swing.JDialog {
     private javax.swing.JComboBox jComboBoxCoches;
     private javax.swing.JComboBox jComboBoxMotos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -460,6 +553,7 @@ public class MainDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelStreaming;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -467,12 +561,15 @@ public class MainDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JRadioButton jRadioButtonAmarillo;
     private javax.swing.JRadioButton jRadioButtonAzul;
     private javax.swing.JRadioButton jRadioButtonMorado;
     private javax.swing.JRadioButton jRadioButtonNegro;
     private javax.swing.JRadioButton jRadioButtonRojo;
     private javax.swing.JRadioButton jRadioButtonRosa;
+    private javax.swing.JRadioButton jRadioButtonStreamingNo;
+    private javax.swing.JRadioButton jRadioButtonStreamingSi;
     private javax.swing.JRadioButton jRadioButtonVerde;
     private javax.swing.JSlider jSliderEdad;
     private javax.swing.JSpinner jSpinner1;
@@ -480,5 +577,6 @@ public class MainDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldFechaAlta;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldStreaming;
     // End of variables declaration//GEN-END:variables
 }
