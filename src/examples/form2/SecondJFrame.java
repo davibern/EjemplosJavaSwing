@@ -128,6 +128,8 @@ public class SecondJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Hay campos vacíos", null, WIDTH);
         } else {
             JOptionPane.showMessageDialog(this, "Usuario guardado", null, WIDTH);
+            this.jTextFieldCodigo.setText("");
+            this.jTextFieldNombre.setText("");
         }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
