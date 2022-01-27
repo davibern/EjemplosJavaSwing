@@ -52,12 +52,17 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ut/resources/Aceptar.png"))); // NOI18N
         jButtonAceptar.setToolTipText("Ingresar un nuevo usuario");
         jButtonAceptar.setContentAreaFilled(false);
         jButtonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButtonAceptar);
 
         jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ut/resources/SALIR.png"))); // NOI18N
@@ -98,6 +103,11 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+        SecondJFrame secondJFrame = new SecondJFrame();
+        secondJFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
