@@ -19,6 +19,9 @@ public class SecondFrame extends javax.swing.JFrame {
     public SecondFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jLabelFuma.setVisible(false);
+        this.jRadioButtonFumaSi.setVisible(false);
+        this.jRadioButtonFumaNo.setVisible(false);
     }
 
     /**
@@ -30,6 +33,7 @@ public class SecondFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupFumador = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
@@ -38,9 +42,12 @@ public class SecondFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSliderEdad = new javax.swing.JSlider();
         jLabelEdad = new javax.swing.JLabel();
+        jLabelFuma = new javax.swing.JLabel();
+        jRadioButtonFumaSi = new javax.swing.JRadioButton();
+        jRadioButtonFumaNo = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
-        jButtonAceptar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jButtonAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,18 +69,26 @@ public class SecondFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Edad");
 
-        jSliderEdad.setMinimum(21);
         jSliderEdad.setPaintLabels(true);
         jSliderEdad.setPaintTicks(true);
         jSliderEdad.setPaintTrack(false);
         jSliderEdad.setSnapToTicks(true);
+        jSliderEdad.setValue(0);
         jSliderEdad.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderEdadStateChanged(evt);
             }
         });
 
-        jLabelEdad.setText("21");
+        jLabelEdad.setText("0");
+
+        jLabelFuma.setText("¿Fuma?");
+
+        buttonGroupFumador.add(jRadioButtonFumaSi);
+        jRadioButtonFumaSi.setText("Sí");
+
+        buttonGroupFumador.add(jRadioButtonFumaNo);
+        jRadioButtonFumaNo.setText("No");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,13 +104,20 @@ public class SecondFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelFuma, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldApellido)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jSliderEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jRadioButtonFumaSi)
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jRadioButtonFumaNo)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jSliderEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabelEdad)))))
                 .addContainerGap())
         );
@@ -112,21 +134,22 @@ public class SecondFrame extends javax.swing.JFrame {
                     .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jSliderEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEdad))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jSliderEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelFuma)
+                            .addComponent(jRadioButtonFumaSi)
+                            .addComponent(jRadioButtonFumaNo)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelEdad)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout());
-
-        jButtonAceptar.setText("Aceptar");
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButtonAceptar);
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +159,14 @@ public class SecondFrame extends javax.swing.JFrame {
         });
         jPanel2.add(jButtonSalir);
 
+        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonAceptar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,7 +175,9 @@ public class SecondFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(564, 564, 564)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,7 +185,7 @@ public class SecondFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -176,6 +209,16 @@ public class SecondFrame extends javax.swing.JFrame {
 
     private void jSliderEdadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderEdadStateChanged
         this.jLabelEdad.setText(String.valueOf(this.jSliderEdad.getValue()));
+        
+        if (this.jSliderEdad.getValue() >= 21) {
+            this.jLabelFuma.setVisible(true);
+            this.jRadioButtonFumaSi.setVisible(true);
+            this.jRadioButtonFumaNo.setVisible(true);
+        } else {
+            this.jLabelFuma.setVisible(false);
+            this.jRadioButtonFumaSi.setVisible(false);
+            this.jRadioButtonFumaNo.setVisible(false);
+        }
     }//GEN-LAST:event_jSliderEdadStateChanged
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
@@ -224,14 +267,18 @@ public class SecondFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupFumador;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelEdad;
+    private javax.swing.JLabel jLabelFuma;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButtonFumaNo;
+    private javax.swing.JRadioButton jRadioButtonFumaSi;
     private javax.swing.JSlider jSliderEdad;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldNombre;
